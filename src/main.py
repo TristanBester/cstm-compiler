@@ -1,6 +1,7 @@
 import sys
 
 from lexer import Lexer
+from parse import Parser
 
 if __name__ == "__main__":
     print("Compiler started")
@@ -11,4 +12,8 @@ if __name__ == "__main__":
     with open(sys.argv[1], "r") as f:
         source = f.read()
 
-    print(source)
+    lexer = Lexer(source)
+    parser = Parser(lexer)
+
+    parser.program()
+    print("Parsing completed")
